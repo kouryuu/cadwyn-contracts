@@ -34,7 +34,7 @@ const REPORT_GAS = process.env.REPORT_GAS || false
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
     solidity: {
-        compilers: [,
+        compilers: [
             {
                 version: "0.8.20",
                 COMPILER_SETTINGS,
