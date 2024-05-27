@@ -7,13 +7,17 @@ import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-contract WynToken is ERC20, ERC20Pausable, Ownable, ERC20Permit {
+contract WynToken is ERC20, ERC20Pausable, Ownable {
     constructor(address initialOwner, uint8 initialWyns)
-        ERC20("Wyn", "WYN")
+        ERC20("Wyn Token", "WYN")
         Ownable(initialOwner)
-        ERC20Permit("Wyn")
+        //ERC20Permit("Wyn")
     {
         _mint(msg.sender, initialWyns * 10 ** decimals());
+    }
+
+    function decimals() public view virtual override returns (uint8) {
+        return 6; //The same as USDC
     }
 
     function pause() public onlyOwner {
