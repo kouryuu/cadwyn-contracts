@@ -5,13 +5,12 @@ pragma solidity ^0.8.7;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
 contract WynToken is ERC20, ERC20Pausable, Ownable {
+
     constructor(address initialOwner, uint8 initialWyns)
         ERC20("Wyn Token", "WYN")
         Ownable(initialOwner)
-        //ERC20Permit("Wyn")
     {
         _mint(msg.sender, initialWyns * 10 ** decimals());
     }
