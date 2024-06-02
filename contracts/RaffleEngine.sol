@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: CC-BY-NC-4.0
 // Compatible with OpenZeppelin Contracts ^5.0.0
 pragma solidity ^0.8.7;
 import "./WynToken.sol";
