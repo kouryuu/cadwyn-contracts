@@ -185,7 +185,7 @@ contract RaffleEngine is Ownable, Pausable, VRFConsumerBaseV2 {
 
     function buyTickets(uint raffleId, uint amount) public whenNotPaused {
         require(raffles[raffleId].isSoldOut == false, "Raffle is sold out");
-        require(raffles[raffleId].creator != msg.sender, "You can't participate in your own raffle");
+        require(raffles[raffleId].creator != msg.sender, "You cannott participate in your own raffle");
         require(raffles[raffleId].isFinished == false, "Raffle is finished");
         require(raffles[raffleId].isCancelled == false, "Raffle was cancelled");
         require(amount > 0, "Amount must be greater than 0");
