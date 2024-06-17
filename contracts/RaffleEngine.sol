@@ -99,10 +99,9 @@ contract RaffleEngine is Ownable, Pausable, VRFConsumerBaseV2 {
         s_keyHash = keyHash;
         s_subscriptionId = subscriptionId;
         wynToken = WynToken(_wynTokenAddress);
-        wynTokenAddress = _wynTokenAddress;
         maxPrizeAmount = wynToken.totalSupply();
         minTickets = 4;
-        //minPrizeAmount = 10 * 10 * wynToken.decimals(); // 10 WYN
+        minPrizeAmount = 10 * 10 ** wynToken.decimals(); // 10 WYN
         minTicketPrice = 3 * 10 ** wynToken.decimals(); // 3 WYN
         cancelationFee = 1 * 10 ** wynToken.decimals(); // 1 WYN
     }
@@ -255,6 +254,8 @@ contract RaffleEngine is Ownable, Pausable, VRFConsumerBaseV2 {
         uint winnerIndex = randomWords[0] % raffles[raffleId].ticketsSold;
         raffles[raffleId].winner = raffles[raffleId].tickets[winnerIndex];
         wynToken.transfer(raffles[raffleId].winner, raffles[raffleId].wynPrizeAmount);
+        uint accumulatedTicketWyns = raffles[raffleId].ticketPrice * raffles[raffleId].ticketsSold;
+        wynToken.transfer(raffles[raffleId].creator, accumulatedTicketWyns);
         raffles[raffleId].isFinished = true;
         emit RaffleFinished(raffleId, raffles[raffleId].winner, raffles[raffleId].wynPrizeAmount);
         s_randomWords = randomWords;
