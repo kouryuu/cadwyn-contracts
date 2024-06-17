@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox")
+//require('hardhat-ethernal')
 require("./tasks")
 require("dotenv").config()
 
@@ -30,6 +31,7 @@ const FORKING_BLOCK_NUMBER = parseInt(process.env.FORKING_BLOCK_NUMBER) || 0
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
 const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
 const REPORT_GAS = process.env.REPORT_GAS || false
+const POLYGON_DEPLOYER_PRIVATE_KEY = process.env.POLYGON_DEPLOYER_PRIVATE_KEY
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -89,7 +91,7 @@ module.exports = {
         },
         polygon: {
             url: POLYGON_MAINNET_RPC_URL,
-            accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+            accounts: POLYGON_DEPLOYER_PRIVATE_KEY !== undefined ? [POLYGON_DEPLOYER_PRIVATE_KEY] : [],
             chainId: 137,
         },
         mumbai: {
