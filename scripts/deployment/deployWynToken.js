@@ -13,7 +13,7 @@ async function deployWynToken(chainId) {
     const accounts = await ethers.getSigners()
     const deployer = accounts[0]
     const wynTokenFactory = await ethers.getContractFactory("WynToken")
-    console.log(`Deploying on${chainId} with ${deployer.address}`)
+    console.log(`Deploying on ${chainId} with ${deployer.address}`)
     let wynTokenOwner = deployer.address
     if(chainId == 137){
         wynTokenOwner = "0xb2f48E0740D8292dD8AC7eD9bE447928255d4Aa1"

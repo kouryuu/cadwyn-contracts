@@ -13,15 +13,20 @@ const { deployRandomNumberConsumer } = require("./deployRandomNumberConsumer")
 const {
     deployRandomNumberDirectFundingConsumer,
 } = require("./deployRandomNumberDirectFundingConsumer")
+const { deployWynToken } = require("./deployWynToken")
+const { deployRaffleEngine } = require("./deployRaffleEngine")
 
 async function main() {
     await run("compile")
     const chainId = network.config.chainId
-    await deployApiConsumer(chainId)
-    await deployAutomationCounter(chainId)
-    await deployPriceConsumerV3(chainId)
-    await deployRandomNumberConsumer(chainId)
-    await deployRandomNumberDirectFundingConsumer(chainId)
+    // await deployApiConsumer(chainId)
+    // await deployAutomationCounter(chainId)
+    // await deployPriceConsumerV3(chainId)
+    // await deployRandomNumberConsumer(chainId)
+    // await deployRandomNumberDirectFundingConsumer(chainId)
+    
+    //let wynTokenAddress = await deployWynToken(chainId);
+    await deployRaffleEngine(chainId, "0x1f1a79326dFd3Cd9C32D4C2702CA404ADd56267F");
 }
 
 // We recommend this pattern to be able to use async/await everywhere
